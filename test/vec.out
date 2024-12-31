@@ -50,13 +50,13 @@ vec_pop() | vec.cnt: 2 | ERROR: No error | VEC: 0 100
 vec_pop() | vec.cnt: 1 | ERROR: No error | VEC: 0 
 vec_pop() | vec.cnt: 0 | ERROR: No error | VEC: 
 vec_free() | ERROR: No error
-vec_err(0): No error
-vec_err(1): NULL argument error
-vec_err(2): Malloc error
-vec_err(3): Index out of range error
-vec_err(4): Mismatch size error
-vec_err(5): Empty vector error
-vec_err(6): What is this errno?
-vec_err(7): What is this errno?
-vec_err(8): What is this errno?
-vec_err(9): What is this errno?
+ds_error(0): No error
+ds_error(1): NULL argument error
+ds_error(2): Malloc error
+ds_error(3): Index out of range error
+ds_error(4): Mismatch size error
+ds_error(5): Empty vector error
+ds_error(6): What is this errno?
+ds_error(7): What is this errno?
+ds_error(8): What is this errno?
+ds_error(9): What is this errno?
