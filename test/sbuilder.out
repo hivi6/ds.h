@@ -1,0 +1,79 @@
+sbuilder_init() | ERROR: No error
+sbuilder_appendc(a) | LEN: 1 | ERROR: No error | STR: a
+sbuilder_appendc(b) | LEN: 2 | ERROR: No error | STR: ab
+sbuilder_appendc(c) | LEN: 3 | ERROR: No error | STR: abc
+sbuilder_appendc(d) | LEN: 4 | ERROR: No error | STR: abcd
+sbuilder_appendc(e) | LEN: 5 | ERROR: No error | STR: abcde
+sbuilder_appendc(f) | LEN: 6 | ERROR: No error | STR: abcdef
+sbuilder_appendc(g) | LEN: 7 | ERROR: No error | STR: abcdefg
+sbuilder_appendc(h) | LEN: 8 | ERROR: No error | STR: abcdefgh
+sbuilder_appendc(i) | LEN: 9 | ERROR: No error | STR: abcdefghi
+sbuilder_appendc(j) | LEN: 10 | ERROR: No error | STR: abcdefghij
+sbuilder_appendc(k) | LEN: 11 | ERROR: No error | STR: abcdefghijk
+sbuilder_appendc(l) | LEN: 12 | ERROR: No error | STR: abcdefghijkl
+sbuilder_appendc(m) | LEN: 13 | ERROR: No error | STR: abcdefghijklm
+sbuilder_appendc(n) | LEN: 14 | ERROR: No error | STR: abcdefghijklmn
+sbuilder_appendc(o) | LEN: 15 | ERROR: No error | STR: abcdefghijklmno
+sbuilder_appendc(p) | LEN: 16 | ERROR: No error | STR: abcdefghijklmnop
+sbuilder_appendc(q) | LEN: 17 | ERROR: No error | STR: abcdefghijklmnopq
+sbuilder_appendc(r) | LEN: 18 | ERROR: No error | STR: abcdefghijklmnopqr
+sbuilder_appendc(s) | LEN: 19 | ERROR: No error | STR: abcdefghijklmnopqrs
+sbuilder_appendc(t) | LEN: 20 | ERROR: No error | STR: abcdefghijklmnopqrst
+sbuilder_appendc(u) | LEN: 21 | ERROR: No error | STR: abcdefghijklmnopqrstu
+sbuilder_appendc(v) | LEN: 22 | ERROR: No error | STR: abcdefghijklmnopqrstuv
+sbuilder_appendc(w) | LEN: 23 | ERROR: No error | STR: abcdefghijklmnopqrstuvw
+sbuilder_appendc(x) | LEN: 24 | ERROR: No error | STR: abcdefghijklmnopqrstuvwx
+sbuilder_appendc(y) | LEN: 25 | ERROR: No error | STR: abcdefghijklmnopqrstuvwxy
+sbuilder_appendc(z) | LEN: 26 | ERROR: No error | STR: abcdefghijklmnopqrstuvwxyz
+sbuilder_pop() | LEN: 25 | ERROR: No error | STR: abcdefghijklmnopqrstuvwxy
+sbuilder_pop() | LEN: 24 | ERROR: No error | STR: abcdefghijklmnopqrstuvwx
+sbuilder_pop() | LEN: 23 | ERROR: No error | STR: abcdefghijklmnopqrstuvw
+sbuilder_pop() | LEN: 22 | ERROR: No error | STR: abcdefghijklmnopqrstuv
+sbuilder_pop() | LEN: 21 | ERROR: No error | STR: abcdefghijklmnopqrstu
+sbuilder_pop() | LEN: 20 | ERROR: No error | STR: abcdefghijklmnopqrst
+sbuilder_pop() | LEN: 19 | ERROR: No error | STR: abcdefghijklmnopqrs
+sbuilder_pop() | LEN: 18 | ERROR: No error | STR: abcdefghijklmnopqr
+sbuilder_pop() | LEN: 17 | ERROR: No error | STR: abcdefghijklmnopq
+sbuilder_pop() | LEN: 16 | ERROR: No error | STR: abcdefghijklmnop
+sbuilder_pop() | LEN: 15 | ERROR: No error | STR: abcdefghijklmno
+sbuilder_pop() | LEN: 14 | ERROR: No error | STR: abcdefghijklmn
+sbuilder_pop() | LEN: 13 | ERROR: No error | STR: abcdefghijklm
+sbuilder_pop() | LEN: 12 | ERROR: No error | STR: abcdefghijkl
+sbuilder_pop() | LEN: 11 | ERROR: No error | STR: abcdefghijk
+sbuilder_pop() | LEN: 10 | ERROR: No error | STR: abcdefghij
+sbuilder_pop() | LEN: 9 | ERROR: No error | STR: abcdefghi
+sbuilder_pop() | LEN: 8 | ERROR: No error | STR: abcdefgh
+sbuilder_pop() | LEN: 7 | ERROR: No error | STR: abcdefg
+sbuilder_pop() | LEN: 6 | ERROR: No error | STR: abcdef
+sbuilder_pop() | LEN: 5 | ERROR: No error | STR: abcde
+sbuilder_pop() | LEN: 4 | ERROR: No error | STR: abcd
+sbuilder_pop() | LEN: 3 | ERROR: No error | STR: abc
+sbuilder_pop() | LEN: 2 | ERROR: No error | STR: ab
+sbuilder_pop() | LEN: 1 | ERROR: No error | STR: a
+sbuilder_pop() | LEN: 0 | ERROR: No error | STR: 
+sbuilder_pop() | LEN: 0 | ERROR: Empty vector error | STR: 
+sbuilder_pop() | LEN: 0 | ERROR: Empty vector error | STR: 
+sbuilder_pop() | LEN: 0 | ERROR: Empty vector error | STR: 
+sbuilder_pop() | LEN: 0 | ERROR: Empty vector error | STR: 
+sbuilder_append(this is a string!) | LEN: 17 | ERROR: No error | STR: this is a string!
+sbuilder_pop() | LEN: 16 | ERROR: No error | STR: this is a string
+sbuilder_pop() | LEN: 15 | ERROR: No error | STR: this is a strin
+sbuilder_pop() | LEN: 14 | ERROR: No error | STR: this is a stri
+sbuilder_pop() | LEN: 13 | ERROR: No error | STR: this is a str
+sbuilder_pop() | LEN: 12 | ERROR: No error | STR: this is a st
+sbuilder_pop() | LEN: 11 | ERROR: No error | STR: this is a s
+sbuilder_pop() | LEN: 10 | ERROR: No error | STR: this is a 
+sbuilder_pop() | LEN: 9 | ERROR: No error | STR: this is a
+sbuilder_pop() | LEN: 8 | ERROR: No error | STR: this is 
+sbuilder_pop() | LEN: 7 | ERROR: No error | STR: this is
+sbuilder_pop() | LEN: 6 | ERROR: No error | STR: this i
+sbuilder_pop() | LEN: 5 | ERROR: No error | STR: this 
+sbuilder_pop() | LEN: 4 | ERROR: No error | STR: this
+sbuilder_pop() | LEN: 3 | ERROR: No error | STR: thi
+sbuilder_pop() | LEN: 2 | ERROR: No error | STR: th
+sbuilder_pop() | LEN: 1 | ERROR: No error | STR: t
+sbuilder_pop() | LEN: 0 | ERROR: No error | STR: 
+sbuilder_pop() | LEN: 0 | ERROR: Empty vector error | STR: 
+sbuilder_pop() | LEN: 0 | ERROR: Empty vector error | STR: 
+sbuilder_pop() | LEN: 0 | ERROR: Empty vector error | STR: 
+sbuilder_free() | ERROR: Empty vector error

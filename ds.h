@@ -48,16 +48,16 @@ int vec_set(vec_t *vec, int index, void *item, int size);
 typedef struct
 {
     vec_t chars;
-} strb_t;
+} sbuilder_t;
 
-int strb_init(strb_t *strb);
-int strb_free(strb_t *strb);
-int strb_append(strb_t *strb, const char *str);
-int strb_appendc(strb_t *strb, char ch);
-int strb_pop(strb_t *strb);
-int strb_get(strb_t *strb, int index, char *ch);
-int strb_set(strb_t *strb, int index, char ch);
-int strb_build(strb_t *strb, char **str);
+int sbuilder_init(sbuilder_t *sbuilder);
+int sbuilder_free(sbuilder_t *sbuilder);
+int sbuilder_append(sbuilder_t *sbuilder, const char *str);
+int sbuilder_appendc(sbuilder_t *sbuilder, char ch);
+int sbuilder_pop(sbuilder_t *sbuilder);
+int sbuilder_get(sbuilder_t *sbuilder, int index, char *ch);
+int sbuilder_set(sbuilder_t *sbuilder, int index, char ch);
+int sbuilder_build(sbuilder_t *sbuilder, char **str);
 
 #endif // DS_H
 
@@ -191,63 +191,63 @@ int vec_set(vec_t *vec, int index, void *item, int size)
 // string builder
 // --------------------------------------------------
 
-int strb_init(strb_t *strb)
+int sbuilder_init(sbuilder_t *sbuilder)
 {
-    if (strb == NULL) return DS_NULL_ERR;
-    return vec_init(&strb->chars);
+    if (sbuilder == NULL) return DS_NULL_ERR;
+    return vec_init(&sbuilder->chars);
 }
 
-int strb_free(strb_t *strb)
+int sbuilder_free(sbuilder_t *sbuilder)
 {
-    if (strb == NULL) return DS_NULL_ERR;
-    return vec_free(&strb->chars);
+    if (sbuilder == NULL) return DS_NULL_ERR;
+    return vec_free(&sbuilder->chars);
 }
 
-int strb_append(strb_t *strb, const char *str)
+int sbuilder_append(sbuilder_t *sbuilder, const char *str)
 {
-    if (strb == NULL || str == NULL) return DS_NULL_ERR;
+    if (sbuilder == NULL || str == NULL) return DS_NULL_ERR;
     for (int i = 0; str[i]; i++)
     {
-	int errno = vec_append(&strb->chars, (void*)str + i, sizeof(char));
+	int errno = vec_append(&sbuilder->chars, (void*)str + i, sizeof(char));
 	if (errno) return errno;
     }
     return DS_NO_ERR;
 }
 
-int strb_appendc(strb_t *strb, char ch)
+int sbuilder_appendc(sbuilder_t *sbuilder, char ch)
 {
-    if (strb == NULL) return DS_NULL_ERR;
-    return vec_append(&strb->chars, &ch, sizeof(ch));
+    if (sbuilder == NULL) return DS_NULL_ERR;
+    return vec_append(&sbuilder->chars, &ch, sizeof(ch));
 }
 
-int strb_pop(strb_t *strb)
+int sbuilder_pop(sbuilder_t *sbuilder)
 {
-    if (strb == NULL) return DS_NULL_ERR;
-    return vec_pop(&strb->chars);
+    if (sbuilder == NULL) return DS_NULL_ERR;
+    return vec_pop(&sbuilder->chars);
 }
 
-int strb_get(strb_t *strb, int index, char *ch)
+int sbuilder_get(sbuilder_t *sbuilder, int index, char *ch)
 {
-    if (strb == NULL || ch == NULL) return DS_NULL_ERR;
-    return vec_get(&strb->chars, index, ch, sizeof(*ch));
+    if (sbuilder == NULL || ch == NULL) return DS_NULL_ERR;
+    return vec_get(&sbuilder->chars, index, ch, sizeof(*ch));
 }
 
-int strb_set(strb_t *strb, int index, char ch)
+int sbuilder_set(sbuilder_t *sbuilder, int index, char ch)
 {
-    if (strb == NULL) return DS_NULL_ERR;
-    return vec_set(&strb->chars, index, &ch, sizeof(ch));
+    if (sbuilder == NULL) return DS_NULL_ERR;
+    return vec_set(&sbuilder->chars, index, &ch, sizeof(ch));
 }
 
-int strb_build(strb_t *strb, char **str)
+int sbuilder_build(sbuilder_t *sbuilder, char **str)
 {
-    if (strb == NULL || str == NULL) return DS_NULL_ERR;
+    if (sbuilder == NULL || str == NULL) return DS_NULL_ERR;
 
-    int len = strb->chars.cnt;
+    int len = sbuilder->chars.cnt;
     char *temp = malloc(sizeof(char) * len + 1);
     temp[len] = 0;
     for (int i = 0; i < len; i++)
     {	
-	int errno = strb_get(strb, i, temp + i);
+	int errno = sbuilder_get(sbuilder, i, temp + i);
 	if (errno) return errno;
     }
 
