@@ -9,7 +9,7 @@ A single header for data structure in C.
 
 ## Testing
 
-The the test.sh script
+To test the ds.h header, run the following command as provided below
 
 ```bash
 > ./test.sh
