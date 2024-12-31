@@ -132,14 +132,13 @@ int vec_set(vec_t *vec, int index, void *item, int size)
     if (vec == NULL || item == NULL) return VEC_NULL_ERR;
     if (index < 0 || index >= vec->cnt) return VEC_RANGE_ERR;
 
-    free(vec->items[vec->cnt - 1]);
-
     char *temp = malloc(sizeof(char) * size);
     if (temp == NULL) return VEC_MALLOC_ERR;
     memcpy(temp, item, size);
 
-    vec->items[vec->cnt - 1] = temp;
-    vec->sizes[vec->cnt - 1] = size;
+    free(vec->items[index]);
+    vec->items[index] = temp;
+    vec->sizes[index] = size;
     return VEC_NO_ERR;
 }
 

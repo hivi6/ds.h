@@ -14,8 +14,36 @@ int main()
     {
 	int temp = 100 - i;
 	errno = vec_append(&vec, &temp, sizeof(i));
-	printf("vec_append(%d) | vec.cnt: %d | ERROR: %s\n", temp, vec.cnt, 
+	printf("vec_append(%d) | vec.cnt: %d | ERROR: %s | VEC: ", temp, vec.cnt, 
 	       vec_error(errno));
+	for (int i = 0; i < vec.cnt; i++)
+	{
+	    int temp;
+	    vec_get(&vec, i, &temp, sizeof(temp));
+	    printf("%d ", temp);
+	}
+	printf("\n");
+    }
+
+    for (int i = 0; i < vec.cnt; i++)
+    {
+	int temp;
+	errno = vec_get(&vec, i, &temp, sizeof(temp));
+	printf("vec_get(%d): %d | ERROR: %s\n", i, temp, vec_error(errno));
+    }
+
+    for (int i = 0; i < vec.cnt; i++)
+    {
+	int temp = 100 * i;
+	errno = vec_set(&vec, i, &temp, sizeof(temp));
+	printf("vec_set(%d): %d | ERROR: %s | VEC: ", i, temp, vec_error(errno));
+	for (int i = 0; i < vec.cnt; i++)
+	{
+	    int temp;
+	    vec_get(&vec, i, &temp, sizeof(temp));
+	    printf("%d ", temp);
+	}
+	printf("\n");
     }
 
     for (int i = 0; i < vec.cnt; i++)
@@ -29,8 +57,15 @@ int main()
     for (int i = 0; i < cnt; i++)
     {
 	errno = vec_pop(&vec);
-	printf("vec_pop() | vec.cnt: %d | ERROR: %s\n", vec.cnt, 
+	printf("vec_pop() | vec.cnt: %d | ERROR: %s | VEC: ", vec.cnt, 
 	       vec_error(errno));
+	for (int i = 0; i < vec.cnt; i++)
+	{
+	    int temp;
+	    vec_get(&vec, i, &temp, sizeof(temp));
+	    printf("%d ", temp);
+	}
+	printf("\n");
     }
 
     errno = vec_free(&vec);

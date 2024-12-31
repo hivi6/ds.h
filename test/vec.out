@@ -1,14 +1,14 @@
 vec_init() | ERROR: No error
-vec_append(100) | vec.cnt: 1 | ERROR: No error
-vec_append(99) | vec.cnt: 2 | ERROR: No error
-vec_append(98) | vec.cnt: 3 | ERROR: No error
-vec_append(97) | vec.cnt: 4 | ERROR: No error
-vec_append(96) | vec.cnt: 5 | ERROR: No error
-vec_append(95) | vec.cnt: 6 | ERROR: No error
-vec_append(94) | vec.cnt: 7 | ERROR: No error
-vec_append(93) | vec.cnt: 8 | ERROR: No error
-vec_append(92) | vec.cnt: 9 | ERROR: No error
-vec_append(91) | vec.cnt: 10 | ERROR: No error
+vec_append(100) | vec.cnt: 1 | ERROR: No error | VEC: 100 
+vec_append(99) | vec.cnt: 2 | ERROR: No error | VEC: 100 99 
+vec_append(98) | vec.cnt: 3 | ERROR: No error | VEC: 100 99 98 
+vec_append(97) | vec.cnt: 4 | ERROR: No error | VEC: 100 99 98 97 
+vec_append(96) | vec.cnt: 5 | ERROR: No error | VEC: 100 99 98 97 96 
+vec_append(95) | vec.cnt: 6 | ERROR: No error | VEC: 100 99 98 97 96 95 
+vec_append(94) | vec.cnt: 7 | ERROR: No error | VEC: 100 99 98 97 96 95 94 
+vec_append(93) | vec.cnt: 8 | ERROR: No error | VEC: 100 99 98 97 96 95 94 93 
+vec_append(92) | vec.cnt: 9 | ERROR: No error | VEC: 100 99 98 97 96 95 94 93 92 
+vec_append(91) | vec.cnt: 10 | ERROR: No error | VEC: 100 99 98 97 96 95 94 93 92 91 
 vec_get(0): 100 | ERROR: No error
 vec_get(1): 99 | ERROR: No error
 vec_get(2): 98 | ERROR: No error
@@ -19,16 +19,36 @@ vec_get(6): 94 | ERROR: No error
 vec_get(7): 93 | ERROR: No error
 vec_get(8): 92 | ERROR: No error
 vec_get(9): 91 | ERROR: No error
-vec_pop() | vec.cnt: 9 | ERROR: No error
-vec_pop() | vec.cnt: 8 | ERROR: No error
-vec_pop() | vec.cnt: 7 | ERROR: No error
-vec_pop() | vec.cnt: 6 | ERROR: No error
-vec_pop() | vec.cnt: 5 | ERROR: No error
-vec_pop() | vec.cnt: 4 | ERROR: No error
-vec_pop() | vec.cnt: 3 | ERROR: No error
-vec_pop() | vec.cnt: 2 | ERROR: No error
-vec_pop() | vec.cnt: 1 | ERROR: No error
-vec_pop() | vec.cnt: 0 | ERROR: No error
+vec_set(0): 0 | ERROR: No error | VEC: 0 99 98 97 96 95 94 93 92 91 
+vec_set(1): 100 | ERROR: No error | VEC: 0 100 98 97 96 95 94 93 92 91 
+vec_set(2): 200 | ERROR: No error | VEC: 0 100 200 97 96 95 94 93 92 91 
+vec_set(3): 300 | ERROR: No error | VEC: 0 100 200 300 96 95 94 93 92 91 
+vec_set(4): 400 | ERROR: No error | VEC: 0 100 200 300 400 95 94 93 92 91 
+vec_set(5): 500 | ERROR: No error | VEC: 0 100 200 300 400 500 94 93 92 91 
+vec_set(6): 600 | ERROR: No error | VEC: 0 100 200 300 400 500 600 93 92 91 
+vec_set(7): 700 | ERROR: No error | VEC: 0 100 200 300 400 500 600 700 92 91 
+vec_set(8): 800 | ERROR: No error | VEC: 0 100 200 300 400 500 600 700 800 91 
+vec_set(9): 900 | ERROR: No error | VEC: 0 100 200 300 400 500 600 700 800 900 
+vec_get(0): 0 | ERROR: No error
+vec_get(1): 100 | ERROR: No error
+vec_get(2): 200 | ERROR: No error
+vec_get(3): 300 | ERROR: No error
+vec_get(4): 400 | ERROR: No error
+vec_get(5): 500 | ERROR: No error
+vec_get(6): 600 | ERROR: No error
+vec_get(7): 700 | ERROR: No error
+vec_get(8): 800 | ERROR: No error
+vec_get(9): 900 | ERROR: No error
+vec_pop() | vec.cnt: 9 | ERROR: No error | VEC: 0 100 200 300 400 500 600 700 800 
+vec_pop() | vec.cnt: 8 | ERROR: No error | VEC: 0 100 200 300 400 500 600 700 
+vec_pop() | vec.cnt: 7 | ERROR: No error | VEC: 0 100 200 300 400 500 600 
+vec_pop() | vec.cnt: 6 | ERROR: No error | VEC: 0 100 200 300 400 500 
+vec_pop() | vec.cnt: 5 | ERROR: No error | VEC: 0 100 200 300 400 
+vec_pop() | vec.cnt: 4 | ERROR: No error | VEC: 0 100 200 300 
+vec_pop() | vec.cnt: 3 | ERROR: No error | VEC: 0 100 200 
+vec_pop() | vec.cnt: 2 | ERROR: No error | VEC: 0 100 
+vec_pop() | vec.cnt: 1 | ERROR: No error | VEC: 0 
+vec_pop() | vec.cnt: 0 | ERROR: No error | VEC: 
 vec_free() | ERROR: No error
 vec_err(0): No error
 vec_err(1): NULL argument error

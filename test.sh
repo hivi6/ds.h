@@ -1,33 +1,50 @@
 #!/bin/sh
-shopt -s extglob
-
-# Generate all the binaries
-make || {
-    echo "Something went wrong while running make";
-    exit 1;
-}
-
-# Run all the binaries and save the output
-for bin in bin/!(*.out); do
-    ./$bin > ./$bin.out;
-done
-
-# Compare all runtime output with provided output
-for test_out in test/*.out; do
-    bin_out=${test_out/test\//bin\/}
-    passed=1
-    diff $test_out $bin_out 2>&1 > /dev/null || {
-	passed=0
-    }
-    passed_msg="| PASSED |";
-    if [ $passed == 0 ]; then
-	passed_msg="| FAILED |";
-    fi
-    echo "$passed_msg diff $test_out $bin_out"
-done
 
 # Remove all the binaries
 make clean || {
     echo "Something went wrong while running make clean";
     exit 1;
 }
+
+# Generate all the binaries
+echo
+make || {
+    echo "Something went wrong while running make";
+    exit 1;
+}
+
+# Run all the binaries and compare outputs
+echo
+total_test=0;
+passed_test=0;
+for bin in bin/*; do
+    total_test=$((total_test + 1))
+    bin_out=$bin.out;
+    test_out=${bin_out/bin\//test\/};
+
+    echo "TESTING $bin";
+
+    ./$bin 2>&1 > $bin_out || {
+	echo "- Something went wrong while running $bin";
+	echo "- Last returned value was non-zero";
+	echo "- check $bin.out";
+	echo "- | FAILED |";
+	continue;
+    }
+
+    diff $bin_out $test_out 2>&1 > /dev/null || {
+	echo "- Something went wrong while comparing output files";
+	echo "- check $bin_out";
+	echo "- | FAILED |";
+	continue;
+    }
+
+    echo "- | PASSED |";
+    passed_test=$((passed_test + 1))
+done
+
+# Give test summary
+echo;
+echo "TEST SUMMARY:";
+echo "TOTAL TESTS: $total_test | PASSED TESTS: $passed_test";
+
