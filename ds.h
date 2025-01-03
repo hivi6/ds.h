@@ -87,6 +87,26 @@ int llist_pushf(llist_t *llist, void *item, int item_size);
 int llist_popb(llist_t *llist);
 int llist_popf(llist_t *llist);
 
+// --------------------------------------------------
+// pair
+// --------------------------------------------------
+
+typedef struct
+{
+    void *first;
+    int first_size;
+
+    void *second;
+    int second_size;
+} pair_t;
+
+int pair_init(pair_t *pair);
+int pair_free(pair_t *pair);
+int pair_setf(pair_t *pair, void *first, int first_size);
+int pair_getf(pair_t *pair, void *first, int first_size);
+int pair_sets(pair_t *pair, void *second, int second_size);
+int pair_gets(pair_t *pair, void *second, int second_size);
+
 #endif // DS_H
 
 // ==================================================
@@ -427,6 +447,76 @@ int llist_popf(llist_t *llist)
     free(node);
 
     llist->cnt--;
+    return DS_NO_ERR;
+}
+
+// --------------------------------------------------
+// pair
+// --------------------------------------------------
+
+int pair_init(pair_t *pair)
+{
+    if (pair == NULL) return DS_NULL_ERR;
+
+    pair->first = NULL;
+    pair->first_size = 0;
+    pair->second = NULL;
+    pair->second_size = 0;
+    return DS_NO_ERR;
+}
+
+int pair_free(pair_t *pair)
+{
+    if (pair == NULL) return DS_NULL_ERR;
+
+    free(pair->first);
+    free(pair->second);
+    return pair_init(pair);
+}
+
+int pair_setf(pair_t *pair, void *first, int first_size)
+{
+    if (pair == NULL || first == NULL) return DS_NULL_ERR;
+    if (pair->first != NULL) free(pair->first);
+
+    char *temp = malloc(first_size * sizeof(char));
+    if (temp == NULL) return DS_MALLOC_ERR;
+    memcpy(temp, first, first_size);
+    pair->first = temp;
+    pair->first_size = first_size;
+    return DS_NO_ERR;
+}
+
+int pair_getf(pair_t *pair, void *first, int first_size)
+{
+    if (pair == NULL || first == NULL) return DS_NULL_ERR;
+    if (pair->first == NULL) return DS_NULL_ERR;
+    if (pair->first_size != first_size) return DS_SIZE_ERR;
+
+    memcpy(first, pair->first, first_size);
+    return DS_NO_ERR;
+}
+
+int pair_sets(pair_t *pair, void *second, int second_size)
+{
+    if (pair == NULL || second == NULL) return DS_NULL_ERR;
+    if (pair->second != NULL) free(pair->second);
+
+    char *temp = malloc(second_size * sizeof(char));
+    if (temp == NULL) return DS_MALLOC_ERR;
+    memcpy(temp, second, second_size);
+    pair->second = temp;
+    pair->second_size = second_size;
+    return DS_NO_ERR;
+}
+
+int pair_gets(pair_t *pair, void *second, int second_size)
+{
+    if (pair == NULL || second == NULL) return DS_NULL_ERR;
+    if (pair->second == NULL) return DS_NULL_ERR;
+    if (pair->second_size != second_size) return DS_SIZE_ERR;
+
+    memcpy(second, pair->second, second_size);
     return DS_NO_ERR;
 }
 

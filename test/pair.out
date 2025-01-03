@@ -1,0 +1,14 @@
+pair_init() | ERROR: No error
+pair_getf(): -1 | ERROR: NULL argument error
+pair_setf(10) | ERROR: No error
+pair_getf(): 10 | ERROR: No error
+pair_gets(): -1 | ERROR: NULL argument error
+pair_sets(20) | ERROR: No error
+pair_gets(): 20 | ERROR: No error
+pair_getf(): 10 | ERROR: No error
+pair_gets(): 20 | ERROR: No error
+pair_setf(3.140000) | ERROR: No error
+pair_sets(x) | ERROR: No error
+pair_getf(): 3.140000 | ERROR: No error
+pair_gets(): x | ERROR: No error
+pair_free() | ERROR: No error
