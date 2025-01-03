@@ -59,6 +59,34 @@ int sbuilder_get(sbuilder_t *sbuilder, int index, char *ch);
 int sbuilder_set(sbuilder_t *sbuilder, int index, char ch);
 int sbuilder_build(sbuilder_t *sbuilder, char **str);
 
+// --------------------------------------------------
+// (double) linked list
+// --------------------------------------------------
+
+typedef struct llist_node_t
+{
+    void *item;
+    int item_size;
+    struct llist_node_t *prev;
+    struct llist_node_t *next;
+} llist_node_t;
+
+typedef struct
+{
+    int cnt;
+    llist_node_t *head;
+    llist_node_t *tail;
+} llist_t;
+
+int llist_init(llist_t *llist);
+int llist_free(llist_t *llist);
+int llist_front(llist_t *llist, void *item, int item_size);
+int llist_back(llist_t *llist, void *item, int item_size);
+int llist_pushb(llist_t *llist, void *item, int item_size);
+int llist_pushf(llist_t *llist, void *item, int item_size);
+int llist_popb(llist_t *llist);
+int llist_popf(llist_t *llist);
+
 #endif // DS_H
 
 // ==================================================
@@ -244,6 +272,7 @@ int sbuilder_build(sbuilder_t *sbuilder, char **str)
 
     int len = sbuilder->chars.cnt;
     char *temp = malloc(sizeof(char) * len + 1);
+    if (temp == NULL) return DS_MALLOC_ERR;
     temp[len] = 0;
     for (int i = 0; i < len; i++)
     {	
@@ -252,6 +281,152 @@ int sbuilder_build(sbuilder_t *sbuilder, char **str)
     }
 
     *str = temp;
+    return DS_NO_ERR;
+}
+
+// --------------------------------------------------
+// (double) linked list
+// --------------------------------------------------
+
+int llist_init(llist_t *llist)
+{
+    if (llist == NULL) return DS_NULL_ERR;
+    llist->cnt = 0;
+    llist->head = NULL;
+    llist->tail = NULL;
+    return DS_NO_ERR;
+}
+
+int llist_free(llist_t *llist)
+{
+    if (llist == NULL) return DS_NULL_ERR;
+    llist_node_t *node = llist->head;
+    while (node)
+    {
+	free(node->item);
+	llist_node_t *next = node->next;
+	free(node);
+	node = next;
+    }
+
+    llist_init(llist);
+    return DS_NO_ERR;
+}
+
+int llist_front(llist_t *llist, void *item, int item_size)
+{
+    if (llist == NULL || item == NULL) return DS_NULL_ERR;
+    if (llist->cnt == 0) return DS_EMPTY_ERR;
+    if (llist->head->item_size != item_size) return DS_SIZE_ERR;
+
+    memcpy(item, llist->head->item, item_size);
+    return DS_NO_ERR;
+}
+
+int llist_back(llist_t *llist, void *item, int item_size)
+{
+    if (llist->cnt == 0) return DS_EMPTY_ERR;
+    if (llist->tail->item_size != item_size) return DS_SIZE_ERR;
+
+    memcpy(item, llist->tail->item, item_size);
+    return DS_NO_ERR;
+}
+
+int llist_pushb(llist_t *llist, void *item, int item_size)
+{
+    if (llist == NULL || item == NULL) return DS_NULL_ERR;
+
+    char *temp = malloc(sizeof(char) * item_size);
+    if (temp == NULL) return DS_MALLOC_ERR;
+    memcpy(temp, item, item_size);
+
+    llist_node_t *node = malloc(sizeof(llist_node_t));
+    if (node == NULL)
+    {
+	free(temp);
+	return DS_MALLOC_ERR;
+    }
+    node->item = temp;
+    node->item_size = item_size;
+    node->prev = NULL;
+    node->next = NULL;
+
+    if (llist->cnt == 0) llist->head = llist->tail = node;
+    else
+    {
+	llist->tail->next = node;
+	node->prev = llist->tail;
+	llist->tail = node;
+    }
+    llist->cnt++;
+    return DS_NO_ERR;
+}
+
+int llist_pushf(llist_t *llist, void *item, int item_size)
+{
+    if (llist == NULL || item == NULL) return DS_NULL_ERR;
+
+    char *temp = malloc(sizeof(char) * item_size);
+    if (temp == NULL) return DS_MALLOC_ERR;
+    memcpy(temp, item, item_size);
+
+    llist_node_t *node = malloc(sizeof(llist_node_t));
+    if (node == NULL)
+    {
+	free(temp);
+	return DS_MALLOC_ERR;
+    }
+    node->item = temp;
+    node->item_size = item_size;
+    node->prev = NULL;
+    node->next = NULL;
+
+    if (llist->cnt == 0) llist->head = llist->tail = node;
+    else
+    {
+	llist->head->prev = node;
+	node->next = llist->head;
+	llist->head = node;
+    }
+    llist->cnt++;
+    return DS_NO_ERR;
+}
+
+int llist_popb(llist_t *llist)
+{
+    if (llist == NULL) return DS_NULL_ERR;
+
+    if (llist->cnt == 0) return DS_EMPTY_ERR;
+
+    llist_node_t *node = llist->tail;
+    llist->tail = llist->tail->prev;
+    if (llist->tail != NULL)
+	llist->tail->next = NULL;
+    else
+	llist->head = NULL;
+    free(node->item);
+    free(node);
+
+    llist->cnt--;
+    return DS_NO_ERR;
+}
+
+int llist_popf(llist_t *llist)
+{
+    if (llist == NULL) return DS_NULL_ERR;
+
+    if (llist->cnt == 0) return DS_EMPTY_ERR;
+
+    llist_node_t *node = llist->head;
+    llist->head = llist->head->next;
+    if (llist->head != NULL)
+	llist->head->prev = NULL;
+    else
+	llist->tail = NULL;
+    free(node->item);
+    free(node);
+
+    llist->cnt--;
     return DS_NO_ERR;
 }
 

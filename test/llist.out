@@ -1,0 +1,130 @@
+llist_init() | ERROR: No error
+llist_front(): -1 | ERROR: Empty vector error
+llist_back(): -1 | ERROR: Empty vector error
+-- llist_pushb() --
+llist_pushb(0) | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_pushb(1) | ERROR: No error
+llist_back(): 1 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_pushb(2) | ERROR: No error
+llist_back(): 2 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_pushb(3) | ERROR: No error
+llist_back(): 3 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_pushb(4) | ERROR: No error
+llist_back(): 4 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_pushb(5) | ERROR: No error
+llist_back(): 5 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_pushb(6) | ERROR: No error
+llist_back(): 6 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_pushb(7) | ERROR: No error
+llist_back(): 7 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_pushb(8) | ERROR: No error
+llist_back(): 8 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_pushb(9) | ERROR: No error
+llist_back(): 9 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+-- llist_popb() --
+llist_back(): 9 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_popb() | ERROR: No error
+llist_back(): 8 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_popb() | ERROR: No error
+llist_back(): 7 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_popb() | ERROR: No error
+llist_back(): 6 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_popb() | ERROR: No error
+llist_back(): 5 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_popb() | ERROR: No error
+llist_back(): 4 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_popb() | ERROR: No error
+llist_back(): 3 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_popb() | ERROR: No error
+llist_back(): 2 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_popb() | ERROR: No error
+llist_back(): 1 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_popb() | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_popb() | ERROR: No error
+llist_front(): -1 | ERROR: Empty vector error
+llist_back(): -1 | ERROR: Empty vector error
+-- llist_pushf() --
+llist_pushf(0) | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_pushf(1) | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 1 | ERROR: No error
+llist_pushf(2) | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 2 | ERROR: No error
+llist_pushf(3) | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 3 | ERROR: No error
+llist_pushf(4) | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 4 | ERROR: No error
+llist_pushf(5) | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 5 | ERROR: No error
+llist_pushf(6) | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 6 | ERROR: No error
+llist_pushf(7) | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 7 | ERROR: No error
+llist_pushf(8) | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 8 | ERROR: No error
+llist_pushf(9) | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 9 | ERROR: No error
+-- llist_popf() --
+llist_back(): 0 | ERROR: No error
+llist_front(): 9 | ERROR: No error
+llist_popf() | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 8 | ERROR: No error
+llist_popf() | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 7 | ERROR: No error
+llist_popf() | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 6 | ERROR: No error
+llist_popf() | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 5 | ERROR: No error
+llist_popf() | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 4 | ERROR: No error
+llist_popf() | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 3 | ERROR: No error
+llist_popf() | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 2 | ERROR: No error
+llist_popf() | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 1 | ERROR: No error
+llist_popf() | ERROR: No error
+llist_back(): 0 | ERROR: No error
+llist_front(): 0 | ERROR: No error
+llist_popf() | ERROR: No error
+llist_free() | ERROR: No error
